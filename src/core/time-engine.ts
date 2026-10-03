@@ -1,5 +1,9 @@
-import type { CategoryMetric, InvestmentRecord, TimeAccount, TimeCategory } from './models';
+import type { CategoryMetric, InvestmentRecord, TimeAccount, TimeCategory, TimeSnapshot } from './models';
 import { CATEGORIES, CATEGORY_META } from './models';
+
+export function cloneSnapshot(snapshot: TimeSnapshot): TimeSnapshot {
+  return { account: { ...snapshot.account }, records: snapshot.records.map((item) => ({ ...item })) };
+}
 
 export function totalInvested(records: InvestmentRecord[]): number {
   return records.reduce((sum, item) => sum + item.hours, 0);

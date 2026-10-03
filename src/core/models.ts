@@ -19,6 +19,14 @@ export interface TimeSnapshot {
   records: InvestmentRecord[];
 }
 
+export interface UndoEntry {
+  snapshot: TimeSnapshot;
+  deleted: InvestmentRecord;
+  expiresAt: number;
+}
+
+export const UNDO_WINDOW_MS = 30_000;
+
 export interface CategoryMetric {
   category: TimeCategory;
   hours: number;
